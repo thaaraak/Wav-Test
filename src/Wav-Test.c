@@ -133,18 +133,18 @@ int create_wav_data( int16_t**	data, int seconds_of_recording, double frequency,
 
     for( int i = 0 ; i < total_count ; i++ )
     {
-    	double sin_floatl = 5000 * (
+/*    	double sin_floatl = 5000 * (
     	        		sinf( 2 * i * M_PI / ( sample_rate / 523.25 ) ) +
     					sinf( 2 * i * M_PI / ( sample_rate / 659.25 ) ) +
     	        		sinf( 2 * i * M_PI / ( sample_rate / 783.99 ) )
 						);
-
+*/
 
 /*
     	double sin_floatl = 10000 * sinf( 2 * i * M_PI / ( sample_rate / frequency ) );
     	double sin_floatr = 10000 * sinf( 2 * i * M_PI / ( sample_rate / frequency ) );
 */
-/*
+
     	double sin_floatl = 5000 * (
         		sinf( 2 * i * M_PI / ( sample_rate / frequency ) ) +
 				sinf( 2 * i * M_PI / ( sample_rate / ( 3 * frequency ) ) ) / 3 +
@@ -156,7 +156,7 @@ int create_wav_data( int16_t**	data, int seconds_of_recording, double frequency,
 				);
 
     	double sin_floatr = 5000 * sinf( 2 * i * M_PI / ( sample_rate / frequency ) );
-*/
+
 
         int16_t lval = sin_floatl;
         int16_t rval = sin_floatl;
@@ -203,7 +203,7 @@ int main(void) {
 	int bits_per_sample = 16;
 	int sample_rate = 44000;
 
-	int len = create_wav_data( &data, seconds_of_recording, 700, num_channels, bits_per_sample, sample_rate );
+	int len = create_wav_data( &data, seconds_of_recording, 1000, num_channels, bits_per_sample, sample_rate );
 	create_wav_header( len, &w, num_channels, bits_per_sample, sample_rate );
 
 	int fd;
